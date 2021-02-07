@@ -7,6 +7,7 @@ defmodule ObjectiveTestApi.Jobs do
   alias ObjectiveTestApi.Repo
 
   alias ObjectiveTestApi.Jobs.Job
+  alias ObjectiveTestApi.Applicants.Applicant
 
   @doc """
   Returns the list of jobs.
@@ -17,10 +18,15 @@ defmodule ObjectiveTestApi.Jobs do
       [%Job{}, ...]
 
   """
-  def list_jobs do
-    Repo.all(Job)
-  end
 
+  def list_jobs do
+    query = from(job in Job,
+    left_join: applicants in assoc(job, :applicants),
+    left_join: skills in assoc(applicants, :skills),
+    preload: [applicants: {applicants, skills: skills}])
+
+    Repo.all(query)
+  end
   @doc """
   Gets a single job.
 

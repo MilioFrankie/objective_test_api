@@ -1,12 +1,7 @@
 defmodule ObjectiveTestApiWeb.Schema do
     use Absinthe.Schema
-  
+    import_types ObjectiveTestApiWeb.Schema.JobTypes
     alias ObjectiveTestApiWeb.JobsResolver
-
-    object :job do
-      field :id, non_null(:id)
-      field :name, non_null(:string)
-    end
 
     query do
         @desc "Get all jobs"
