@@ -5,6 +5,7 @@ defmodule ObjectiveTestApiWeb.Schema.ApplicantTypes do
     object :applicant do 
         field :id, non_null(:id)
         field :name, non_null(:string)
+        field :email, non_null(:string)
         field :website, non_null(:string)
         field :cover_letter, non_null(:string)
         field :job_id, non_null(:id)
