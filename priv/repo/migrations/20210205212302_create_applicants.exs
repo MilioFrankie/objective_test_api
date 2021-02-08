@@ -8,8 +8,8 @@ defmodule ObjectiveTestApi.Repo.Migrations.CreateApplicants do
       add :website, :string
       add :cover_letter, :text
       add :job_id, references(:jobs, on_delete: :nothing)
-
-      timestamps()
+      add :inserted_at, :naive_datetime, default: fragment("now()")
+      add :updated_at, :naive_datetime, default: fragment("now()")
     end
 
     create index(:applicants, [:job_id])
