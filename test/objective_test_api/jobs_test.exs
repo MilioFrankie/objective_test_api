@@ -2,10 +2,9 @@ defmodule ObjectiveTestApi.JobsTest do
   use ObjectiveTestApi.DataCase
 
   alias ObjectiveTestApi.Jobs
+  alias ObjectiveTestApi.Jobs.Job
 
   describe "jobs" do
-    alias ObjectiveTestApi.Jobs.Job
-
     @valid_attrs %{name: "some name"}
     @update_attrs %{name: "some updated name"}
     @invalid_attrs %{name: nil}
@@ -14,14 +13,15 @@ defmodule ObjectiveTestApi.JobsTest do
       {:ok, job} =
         attrs
         |> Enum.into(@valid_attrs)
-        |> Jobs.create_job()
-
-      job
+        |> Jobs.create_job() 
+  
+         job 
     end
 
     test "list_jobs/0 returns all jobs" do
-      job = job_fixture()
-      assert Jobs.list_jobs() == [job]
+      job_fixture()
+
+      assert length(Jobs.list_jobs()) == 1
     end
 
     test "get_job!/1 returns the job with given id" do
