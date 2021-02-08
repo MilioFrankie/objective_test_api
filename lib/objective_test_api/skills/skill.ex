@@ -5,9 +5,7 @@ defmodule ObjectiveTestApi.Skills.Skill do
 
   schema "skills" do
     field :name, :string
-    # field :applicant_id, :id
-    belongs_to :applicant, Applicant, foreign_key: :applicant_id
-
+    belongs_to :applicant, Applicant
 
     timestamps()
   end
@@ -15,7 +13,7 @@ defmodule ObjectiveTestApi.Skills.Skill do
   @doc false
   def changeset(skill, attrs) do
     skill
-    |> cast(attrs, [:name])
+    |> cast(attrs, [:name, :applicant_id])
     |> validate_required([:name])
   end
 end

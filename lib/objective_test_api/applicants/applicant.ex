@@ -9,9 +9,8 @@ defmodule ObjectiveTestApi.Applicants.Applicant do
     field :email, :string
     field :name, :string
     field :website, :string
-    # field :job_id, :id
-    has_many :skills, Skill, foreign_key: :applicant_id
-    belongs_to :job, Job, foreign_key: :job_id
+    has_many :skills, Skill
+    belongs_to :job, Job
 
     timestamps()
   end
@@ -19,7 +18,7 @@ defmodule ObjectiveTestApi.Applicants.Applicant do
   @doc false
   def changeset(applicant, attrs) do
     applicant
-    |> cast(attrs, [:name, :email, :website, :cover_letter])
+    |> cast(attrs, [:name, :email, :website, :cover_letter, :job_id])
     |> validate_required([:name, :email, :website, :cover_letter])
   end
 end

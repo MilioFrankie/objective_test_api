@@ -5,7 +5,7 @@ defmodule ObjectiveTestApi.Jobs.Job do
 
   schema "jobs" do
     field :name, :string
-    has_many :applicants, Applicant, foreign_key: :job_id
+    has_many :applicants, Applicant
 
     timestamps()
   end
