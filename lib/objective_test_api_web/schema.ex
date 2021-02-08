@@ -5,7 +5,7 @@ defmodule ObjectiveTestApiWeb.Schema do
 
     query do
         @desc "Get all jobs"
-        field :all_jobs, non_null(list_of(non_null(:job))) do
+        field :all_jobs, list_of(:job) do
           resolve(&JobsResolver.all_jobs/3)
         end
     end

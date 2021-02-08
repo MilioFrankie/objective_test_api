@@ -5,9 +5,7 @@ defmodule ObjectiveTestApi.Jobs do
 
   import Ecto.Query, warn: false
   alias ObjectiveTestApi.Repo
-
   alias ObjectiveTestApi.Jobs.Job
-  alias ObjectiveTestApi.Applicants.Applicant
 
   @doc """
   Returns the list of jobs.
